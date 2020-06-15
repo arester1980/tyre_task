@@ -1,11 +1,10 @@
 import yaml
-from pprint import pprint
+# from pprint import pprint
 
 
 def pars(file, tag):
     with open(file, encoding="utf-8") as f:
         templates = yaml.safe_load(f)
-        pprint(templates)
         start = templates.find(tag)
         end = templates.find('</'+tag)
         value = templates[start:end]
