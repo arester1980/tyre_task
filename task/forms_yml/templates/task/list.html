@@ -1,0 +1,12 @@
+{% extends "forms_yml/index.html" %}
+
+{% block content %}
+
+{% for item in items %}
+<h1> {{item.vendor}} </h1>
+<h2> {{item.file}} </h2>
+<h4> {{item.price}} </h4>
+<hr>
+{% endfor %}
+
+{% endblock %}
