@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Tyre, Incoming
 from django.views.generic import ListView, DetailView
 import yaml
@@ -19,20 +19,12 @@ class FileView(DetailView):
     template_name = 'task/detail.html'
     pk_url_kwarg = 'id'
 
-    def pars(self, tag):
-        print('wORKS!!!')
-        return 'works'
-    #     with open(self, encoding="utf-8") as f:
-    #         templates = yaml.safe_load(f)
-    #         start = templates.find(tag)
-    #         end = templates.find('</' + tag)
-    #         value = templates[start:end]
-    #         return value.split(">")[1]
-    #
-    # vendor = pars('items.yml', 'vendor')
-    # model = pars('items.yml', 'model')
-    # price = pars('items.yml', 'price')
-    #
-    # print(vendor)
-    # print(model)
-    # print(price)
+
+def create(request):
+    if request.method == "POST":
+        tyre = Incoming()
+        tyre.vendor = request.POST.get("vendor")
+        tyre.model = request.POST.get("model")
+        tyre.price = request.POST.get("price")
+        tyre.save()
+    return HttpResponseRedirect("/")

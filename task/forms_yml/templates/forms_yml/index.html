@@ -13,17 +13,28 @@
       rel="stylesheet"
     />
     <link type="text/css" rel="stylesheet" href="css/style.css" />
-    <title>Pet Site</title>
+    <title>Tyre task</title>
   </head>
   <body>
-
-  <form enctype="multipart/form-data" method="post">
+ <form method="post" action="create/">
     {% csrf_token %}
-   <p><input type="file" name="f">
-   <input type="submit" value="Отправить"></p>
+   <p><label>Производитель</label><br>
+     <input type="text" name="vendor" /></p>
+   <p><label>Модель</label><br>
+     <input type="text" name="model" /></p>
+   <p><label>Цена</label><br>
+     <input type="number" name="price" /></p>
+   <input type="submit" value="Сохранить" >
   </form>
     {% block content %}
+
     {% endblock %}
+<!--  <form enctype="multipart/form-data" method="post">-->
+<!--    {% csrf_token %}-->
+<!--   <p><input type="file" name="f">-->
+<!--   <input type="submit" value="Отправить"></p>-->
+<!--  </form>-->
+
   </body>
 
 </html>

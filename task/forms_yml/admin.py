@@ -11,4 +11,4 @@ class TyreAdmin(admin.ModelAdmin):
 
 @admin.register(Incoming)
 class IncomingAdmin(admin.ModelAdmin):
-    list_display = ('title', 'file')
+    list_display = ('vendor', 'model', 'price')

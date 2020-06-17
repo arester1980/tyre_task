@@ -27,13 +27,13 @@ class Tyre(models.Model):
         return self.model
 
 class Incoming(models.Model):
-    title = models.CharField(max_length=200, verbose_name='Имя файла')
-    file = models.FileField(upload_to='media/')
+    vendor = models.CharField(max_length=200, verbose_name='Имя файла')
+    model = models.CharField(max_length=200, verbose_name='Модель')
+    price = models.IntegerField(default=0, verbose_name='Цена')
 
     class Meta:
         verbose_name = 'Файл'
         verbose_name_plural = 'Файлы'
 
     def __str__(self):
-        return self.title
-
+        return self.vendor
