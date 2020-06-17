@@ -22,9 +22,10 @@ class FileView(DetailView):
 
 def create(request):
     if request.method == "POST":
+        print('request')
         tyre = Incoming()
-        tyre.vendor = request.POST.get("vendor")
-        tyre.model = request.POST.get("model")
-        tyre.price = request.POST.get("price")
-        tyre.save()
+        # tyre.vendor = request.POST.get(open(file=file).read(1))
+        # tyre.vendor = request.POST.get(open(file=file).read(2))
+        # tyre.vendor = request.POST.get(open(file=file).read(3))
+        # tyre.save()
     return HttpResponseRedirect("/")

@@ -16,25 +16,24 @@
     <title>Tyre task</title>
   </head>
   <body>
- <form method="post" action="create/">
-    {% csrf_token %}
-   <p><label>Производитель</label><br>
-     <input type="text" name="vendor" /></p>
-   <p><label>Модель</label><br>
-     <input type="text" name="model" /></p>
-   <p><label>Цена</label><br>
-     <input type="number" name="price" /></p>
-   <input type="submit" value="Сохранить" >
-  </form>
-    {% block content %}
-
-    {% endblock %}
-<!--  <form enctype="multipart/form-data" method="post">-->
+<!-- <form method="post" action="create/">-->
 <!--    {% csrf_token %}-->
-<!--   <p><input type="file" name="f">-->
-<!--   <input type="submit" value="Отправить"></p>-->
+<!--   <p><label>Производитель</label><br>-->
+<!--     <input type="text" name="vendor" /></p>-->
+<!--   <p><label>Модель</label><br>-->
+<!--     <input type="text" name="model" /></p>-->
+<!--   <p><label>Цена</label><br>-->
+<!--     <input type="number" name="price" /></p>-->
+<!--   <input type="submit" value="Сохранить" >-->
 <!--  </form>-->
 
+  <form enctype="multipart/form-data" method="post" action="create/">
+    {% csrf_token %}
+   <p><input type="file" name="f">
+   <input type="submit" value="Отправить"></p>
+  </form>
+    {% block content %}
+    {% endblock %}
   </body>
 
 </html>
