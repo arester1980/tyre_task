@@ -12,7 +12,6 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
     <title>Tyre task</title>
   </head>
   <body>
@@ -27,7 +26,7 @@
 <!--   <input type="submit" value="Сохранить" >-->
 <!--  </form>-->
 
-  <form enctype="multipart/form-data" method="post" action="create/">
+  <form enctype="multipart/form-data" method="post" action="worker">
     {% csrf_token %}
    <p><input type="file" name="f">
    <input type="submit" value="Отправить"></p>

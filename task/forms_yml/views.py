@@ -1,31 +1,29 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from .models import Tyre, Incoming
-from django.views.generic import ListView, DetailView
-import yaml
+from django.http import HttpResponse
+from .models import Tyre
+from django.views.generic import ListView
+from .templates import worker
+from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse('Hello, world. You\'re at the polls index.')
+    vendor = worker.pars('task/items.yml', 'vendor')
+    model = worker.pars('task/items.yml', 'model')
+    price = worker.pars('task/items.yml', 'price')
+    return HttpResponse('Vendor: {}\nModel: {}\nPrice: {}'.format(vendor, model, price))
+
+def tyre_new(request):
+    if request.method == "POST":
+        print(request.f)
+        vendor = worker.pars('files', 'vendor')
+        model = worker.pars('files', 'model')
+        price = worker.pars('files', 'price')
+        print(vendor)
+        print(model)
+        return render('list')
+        # return HttpResponse('Vendor: {}\nModel: {}\nPrice: {}'.format(vendor, model, price))
 
 
 class PostListView(ListView):
     queryset = Tyre.objects.all()
     context_object_name = 'items'
     template_name = 'task/list.html'
-
-
-class FileView(DetailView):
-    model = Incoming
-    template_name = 'task/detail.html'
-    pk_url_kwarg = 'id'
-
-
-def create(request):
-    if request.method == "POST":
-        print('request')
-        tyre = Incoming()
-        # tyre.vendor = request.POST.get(open(file=file).read(1))
-        # tyre.vendor = request.POST.get(open(file=file).read(2))
-        # tyre.vendor = request.POST.get(open(file=file).read(3))
-        # tyre.save()
-    return HttpResponseRedirect("/")

@@ -1,6 +1,5 @@
 from django.db import models
-import yaml
-from django.core.files import File
+from .templates import worker
 
 
 class Vendor(models.Model):
@@ -19,21 +18,14 @@ class Tyre(models.Model):
     model = models.CharField(max_length=200, verbose_name='Модель')
     price = models.IntegerField(default=0, verbose_name='Цена $')
 
+    def pars(self):
+        self.vendor = worker.pars('task/items.yml', 'vendor')
+        self.model = worker.pars('task/items.yml', 'model')
+        self.price = worker.pars('task/items.yml', 'price')
+
     class Meta:
         verbose_name = 'Шина'
         verbose_name_plural = 'Шины'
 
     def __str__(self):
         return self.model
-
-class Incoming(models.Model):
-    vendor = models.CharField(max_length=200, verbose_name='Имя файла')
-    model = models.CharField(max_length=200, verbose_name='Модель')
-    price = models.IntegerField(default=0, verbose_name='Цена')
-
-    class Meta:
-        verbose_name = 'Файл'
-        verbose_name_plural = 'Файлы'
-
-    def __str__(self):
-        return self.vendor
