@@ -1,0 +1,24 @@
+{% extends "forms_yml/index.html" %}
+
+{% block content %}
+<h1>Add Tyre</h1>
+
+<table class="table table-sm">
+	<thead>
+    <tr>
+      <th scope="col">Vendor</th>
+      <th scope="col">Model</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+	<tbody>
+    <tr>
+
+      <td>{{ vendor }}</td>
+      <td>{{ model }}</td>
+      <td>${{ price }}</td>
+    </tr>
+    </tbody>
+</table>
+
+{% endblock %}

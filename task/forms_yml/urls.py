@@ -4,10 +4,9 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('list/', views.PostListView.as_view(), name='list'),
-    path('tyre/', views.tyre_new, name='tyre_new'),
-    path('list/UploadFileForm', views.upload_file, name='tyre_new'),
+    path('', views.start, name='start'),
+    path('list/', views.list_tyre, name='list'),
+    path('result/', views.upload_file, name='result')
 ]
 
 
