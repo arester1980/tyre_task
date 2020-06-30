@@ -23,13 +23,16 @@
 	<div class="row">
 		<form enctype="multipart/form-data" method="post" action="{% url 'result' %}">
             {% csrf_token %}
-            <p><input type="file" name="upload">
-            <input type="submit" value="Отправить"></p>
+			{{ form.model }}
+			{{ form.price }}
+            <p><input type="file" name="upload" class="form-control">
+            <input type="submit" value="Отправить" class="form-control"></p>
 		</form>
 	</div>
 
     {% block content %}
 
     {% endblock %}
+
 </body>
 </html>

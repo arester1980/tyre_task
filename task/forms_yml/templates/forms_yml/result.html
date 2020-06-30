@@ -16,9 +16,20 @@
 
       <td>{{ vendor }}</td>
       <td>{{ model }}</td>
-      <td>${{ price }}</td>
+      <td>{{ currency }} {{ price }}</td>
     </tr>
     </tbody>
 </table>
+
+<div class="row">
+		<form method="post">
+            {% csrf_token %}
+            <p><input type="text" placeholder='{{ model }}' class="form-control">
+
+              <input type="text" placeholder='{{ vendor }}' class="form-control">
+              <input type="text" placeholder='{{ price }}' class="form-control">
+<!--            <button type="submit" value="Сохранить" class="form-control">SAVES</p>-->
+		</form>
+	</div>
 
 {% endblock %}
