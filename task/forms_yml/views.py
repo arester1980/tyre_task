@@ -1,8 +1,8 @@
 from .models import Tyre
 from .templates import worker
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
-from .forms import TyreForm
+from .forms import TyreForm, VendorForm
 
 
 def start(request):
@@ -24,7 +24,21 @@ def upload_file(request):
             'price': worker.pars(f'media/{name}', 'price'),
             'currency': worker.pars(f'media/{name}', 'currency')
         }
-        form = TyreForm()
-        if form.is_valid():
-            form.save()
         return render(request, 'forms_yml/result.html', context)
+
+def save(request):
+    form_tyre = TyreForm()
+    context = {
+        'form_tyre': form_tyre,
+        'vendor': 'SS'
+    }
+    if request.method == 'POST':
+        form_tyre = TyreForm(request.POST)
+        print(form_tyre)
+        if form_tyre.is_valid():
+            form_tyre.save()
+            return redirect('list')
+        else:
+            print('Error')
+
+    return render(request, 'forms_yml/save.html', context)

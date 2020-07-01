@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.start, name='start'),
     path('list/', views.list_tyre, name='list'),
     path('result/', views.upload_file, name='result'),
+    path('save/', views.save, name='save'),
 ]
 
 

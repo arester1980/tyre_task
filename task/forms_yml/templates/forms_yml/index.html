@@ -15,22 +15,18 @@
 			<a href="{% url 'start' %}" class="navbar-brand">Start Page</a></div>
 		<div class="col">
 			<a href="{% url 'list' %}" class="navbar-brand">Show Data</a></div>
+		<div class="col">
+			<a href="{% url 'save' %}" class="navbar-brand">Save Data</a></div>
 	</div>
 </div>
 <p></p>
 <body>
-<div class="container">
-	<div class="row">
-		<form enctype="multipart/form-data" method="post" action="{% url 'result' %}">
-            {% csrf_token %}
-			{{ form.model }}
-			{{ form.price }}
-            <p><input type="file" name="upload" class="form-control">
-            <input type="submit" value="Отправить" class="form-control"></p>
-		</form>
-	</div>
 
-    {% block content %}
+	{% block list %}
+
+    {% endblock %}
+
+    {% block form %}
 
     {% endblock %}
 
